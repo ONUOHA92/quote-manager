@@ -1,113 +1,249 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import { useState } from "react";
+import QuoteDrawer from "./components/QuoteDrawer";
+
+const events = [
+  {
+    title: "Event 1",
+    start: "2024-06-01",
+    quoteNumber: "5 Quotes",
+    total: "$23,045.00",
+  },
+  {
+    title: "Event 2",
+    start: "2024-06-02",
+    quoteNumber: "5 Quotes",
+    total: "$10,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-03",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-04",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-05",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-06",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-07",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-08",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-09",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-10",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-11",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-12",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-13",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-14",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-15",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-16",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-17",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-18",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-19",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-20",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-21",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-22",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-23",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-24",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-25",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+
+  {
+    title: "Event 3",
+    start: "2024-06-26",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-27",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-28",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-29",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  {
+    title: "Event 3",
+    start: "2024-06-30",
+    quoteNumber: "Quote #003",
+    total: "$5,000.00",
+  },
+  // Add more events as needed within June 2024
+];
+
+function renderEventContent(eventInfo: any) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="mr-3 px-3 pt-3">
+      <p className="text-[#374151]">
+        {eventInfo.event.extendedProps.quoteNumber}
+      </p>
+      <p className="bg-[#98FF9B40] mt-3 text-black p-1">
+        {eventInfo.event.extendedProps.total}
+      </p>
+    </div>
+  );
+}
+
+export default function Calendar() {
+  const [selectedEvent, setSelectedEvent] = useState<null>(null);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+
+  // Function to handle event click
+  const handleEventClick = (clickInfo: any) => {
+    setSelectedEvent(clickInfo.event); // Store clicked event data
+    setDrawerOpen(true); // Open the modal
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setDrawerOpen(false);
+  };
+  return (
+    <div className="container mx-auto mt-20">
+      <div>
+        <h2 className="text-[#1F2937]">All Existing Quotes</h2>
+        <p className="text-[#6B7280]">View all created quotes</p>
       </div>
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        events={events}
+        eventContent={renderEventContent}
+        eventClassNames="custom-event"
+        initialView="dayGridMonth"
+        buttonText={{
+          today: "Today",
+          month: "Month",
+          week: "Week",
+          day: "Day",
+        }}
+        eventClick={handleEventClick} // Handle event click
+      />
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {/* QuoteDrawer component for displaying event details */}
+      <QuoteDrawer
+        drawerOpen={drawerOpen}
+        setDrawerOpen={setDrawerOpen}
+        // selectedEventId={selectedEvent ? selectedEvent.id : null} // Pass selected event ID
+      />
+    </div>
   );
 }
